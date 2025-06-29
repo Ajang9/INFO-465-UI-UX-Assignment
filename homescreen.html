@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VCU Course Registration</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #FFC72C;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: url('vcu-logo');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 400px;
+        }
+
+        .header {
+            background: #000;
+            color: #FFC72C;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .header-logo {
+            height: 30px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-container input[type="text"] {
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .menu-button {
+            background: #FFC72C;
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .menu-button:hover {
+            background: #e6b522;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 20px 40px 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #000;
+            border-radius: 10px;
+            padding: 40px 50px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .card h1 {
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .card p {
+            color: #555;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        .nav-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #000;
+            color: #FFC72C;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            border: 2px solid #000;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: #FFC72C;
+            color: #000;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 13px;
+            color: #000;
+            background: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid #ddd;
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                padding: 30px 20px;
+            }
+
+            .header-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with logo in front of text -->
+    <div class="header">
+        <div class="header-title">
+            
+            VCU
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <button class="menu-button">Menu</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+        <div class="card">
+            <h1>Course Registration</h1>
+            <p>Select an option to get started:</p>
+
+            <a href="course-search.html" class="nav-button">Search for Courses</a>
+            <a href="student-registration.html" class="nav-button">Student Registration</a>
+            <a href="instructor-schedule.html" class="nav-button">Instructor Schedules</a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Virginia Commonwealth University. All rights reserved.
+    </footer>
+
+</body>
+</html>
