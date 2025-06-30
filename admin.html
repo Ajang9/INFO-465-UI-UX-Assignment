@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Session Enrollment</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f7f7f7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background: #000;
+      color: #FFC72C;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    .header-title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-container input[type="text"] {
+      padding: 6px 12px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    .menu-button {
+      background: #FFC72C;
+      color: #000;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .menu-button:hover {
+      background: #e6b522;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 120px 20px 40px 20px;
+    }
+
+    .card {
+      background: #fff;
+      border: 2px solid #000;
+      border-radius: 10px;
+      padding: 40px 50px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: #000;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 15px;
+      display: block;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #000;
+      color: #FFC72C;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #FFC72C;
+      color: #000;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 13px;
+      color: #000;
+      background: rgba(255, 255, 255, 0.7);
+      border-top: 1px solid #ddd;
+      margin-top: auto;
+    }
+
+    @media (max-width: 500px) {
+      .card {
+        padding: 30px 20px;
+      }
+
+      .header-title {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-title">VCU</div>
+    <div class="search-container">
+      <input type="text" placeholder="Search...">
+      <button class="menu-button">Menu</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <div class="card">
+      <h2>Session Enrollment</h2>
+
+      <label for="auth-password">Access Code</label>
+      <input type="password" id="auth-password" placeholder="Enter access code">
+      <button onclick="authorize()">Access Session List</button>
+
+      <div id="session-section" style="display: none;">
+        <label for="session-select">Choose Session</label>
+        <select id="session-select" onchange="showStudents()">
+          <option value="INFO465-1">INFO465-1</option>
+          <option value="INFO465-2">INFO465-2</option>
+          <option value="INFO300-1">INFO300-1</option>
+          <option value="INFO300-2">INFO300-2</option>
+          <option value="INFO450-1">INFO450-1</option>
+          <option value="INFO450-2">INFO450-2</option>
+        </select>
+
+        <h3>Enrolled Students:</h3>
+        <ul id="student-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Virginia Commonwealth University. All rights reserved.
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const mockStudents = {
+      "INFO465-1": ["Kevin Chavez", "Andy Yang", "Mia Lewis"],
+      "INFO465-2": ["Jordan Scott", "Alex Kim"],
+      "INFO300-1": ["Samantha Diaz", "Bob Dylan"],
+      "INFO300-2": ["Ava Chen"],
+      "INFO450-1": ["Luis Gomez", "Noah Brown"],
+      "INFO450-2": ["Elena Cruz"]
+    };
+
+    function authorize() {
+      const pass = document.getElementById('auth-password').value;
+      if (pass === "12345") {
+        document.getElementById('session-section').style.display = 'block';
+      } else {
+        alert("Unauthorized access.");
+      }
+    }
+
+    function showStudents() {
+      const session = document.getElementById('session-select').value;
+      const list = document.getElementById('student-list');
+      list.innerHTML = "";
+
+      if (mockStudents[session]) {
+        mockStudents[session].forEach(name => {
+          const li = document.createElement('li');
+          li.textContent = name;
+          list.appendChild(li);
+        });
+      } else {
+        list.innerHTML = "<li>No students enrolled.</li>";
+      }
+    }
+  </script>
+
+</body>
+</html>
