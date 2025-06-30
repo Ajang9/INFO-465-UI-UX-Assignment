@@ -6,4 +6,4 @@ Student Registration Screen: Kevin Chavez
 
 Instructor Schedule Screen: Kevin Chavez
 
-Session Enrollment Screen: Kevin Chavez
+Session Enrollment Screen: Kevin Chavez.
